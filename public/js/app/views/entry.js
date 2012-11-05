@@ -4,6 +4,28 @@ define([
   
   return Backbone.View.extend({
     
+    events: {
+      'click .remove': 'remove'
+    },
+
+    initialize: function() {
+      this.model.on('destroy', this.remove_html, this);
+    },
+
+    render: function() {
+      var html = Marker.render('entry', this.model);
+      this.$el.append(html);
+      return this;
+    },
+
+    remove: function(e) {
+      e.preventDefault();
+      this.model.destroy();
+    },
+
+    remove_html: function() {
+      this.$el.remove();
+    }
   });
 });
 

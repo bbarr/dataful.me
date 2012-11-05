@@ -33,4 +33,7 @@ require([
 
   new HeaderView().render();
 
+  stats.fetch();
+  entries.fetch();
+
 });

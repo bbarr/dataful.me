@@ -4,5 +4,7 @@ define([
   
   return Backbone.Collection.extend({
 
+    url: '/stats'
+
   });
 });

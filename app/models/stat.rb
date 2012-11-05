@@ -73,7 +73,11 @@ class Stat
   end
 
   def get_entries
-    Entry.where(query)
+    current_query = query.clone
+    current_query.each do |k, v|
+      current_query.delete(k) if v.empty?
+    end
+    Entry.where(current_query)
   end
 
   def merge_string_into_query query, string
@@ -111,7 +115,6 @@ class Stat
 
   def parse_subject match
     self.subject = match[3].nil? ? { category: match[2] } : { tag: match[2] }
-    p subject
   end
 
   def parse_query match

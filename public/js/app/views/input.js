@@ -13,14 +13,18 @@ define([
     },
 
     initialize: function(config) {
+
       this.entries = config.entries;
       this.stats = config.stats;
+
       this.feedback = new Feedback;
+
       this.$form = this.$el.find('form');
       this.$input = this.$form.find('input');
     },
 
     submit: function(e) {
+
       e.preventDefault();
 
       var text = this.$input.val();
