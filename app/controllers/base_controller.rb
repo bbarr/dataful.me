@@ -36,7 +36,11 @@ class BaseController < Sinatra::Base
   
   def errored resource={}
     status 500
-    halt (resource[:errors] || resource).to_json
+    if resource.is_a? Hash
+      halt resource.to_json
+    else
+      halt (resource.try(:errors) || resource).to_json
+    end
   end
   
   def missing

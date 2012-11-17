@@ -7,7 +7,6 @@ gem "rack-parser", require: "rack/parser"
 gem "bson_ext"
 gem "warden"
 gem "bcrypt-ruby", require: "bcrypt"
-gem "debugger"
 
 group :development do
   gem "rspec"

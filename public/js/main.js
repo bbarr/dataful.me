@@ -10,14 +10,19 @@ require.config({
       deps: [ 'underscore', 'vendor/jquery' ],
       exports: 'Backbone'
     },
-    bootstrap: [ 'vendor/jquery' ]
+    bootstrap: [ 'vendor/jquery' ],
+    charts: [ 'goog' ]
   },
   paths: {
     bootstrap: 'vendor/bootstrap',
     backbone: 'vendor/backbone',
     underscore: 'vendor/underscore',
     marker: 'vendor/marker',
-    events: 'lib/events'
+    events: 'lib/events',
+    charts: 'vendor/google.charts',
+    async: 'vendor/require.async',
+    goog: 'vendor/require.goog',
+    propertyParser: 'vendor/require.property_parser'
   }
 });
 

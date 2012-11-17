@@ -7,6 +7,6 @@ class MainController < BaseController
   end
 
   post "/unauthenticated" do
-    halt 401
+    errored env['warden'].errors.to_hash
   end
 end

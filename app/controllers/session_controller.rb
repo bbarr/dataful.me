@@ -10,7 +10,6 @@ class SessionController < BaseController
 
   post "/" do
     env['warden'].authenticate!
-    ok
   end
 
   delete "/" do

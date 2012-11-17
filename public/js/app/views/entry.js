@@ -20,7 +20,7 @@ define([
 
     remove: function(e) {
       e.preventDefault();
-      this.model.destroy();
+      this.model.destroy({ wait: true });
     },
 
     remove_html: function() {
@@ -28,4 +28,3 @@ define([
     }
   });
 });
-

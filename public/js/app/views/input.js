@@ -8,7 +8,6 @@ define([
     el: '#input',
 
     events: {
-      'blur input': 'submit',
       'submit form': 'submit'
     },
 
@@ -31,13 +30,13 @@ define([
       if (!text) return;
       
       var collection = this.is_entry(text) ? this.entries : this.stats;
-      collection.create({ raw: text });
+      collection.create({ raw: text }, { wait: true });
 
       this.$input.val('');
     },
 
     is_entry: function(text) {
-      return !(/"|'/.test(text));
+      return !(/^count|^average/.test(text));
     }
   });
 });

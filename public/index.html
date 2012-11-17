@@ -5,16 +5,61 @@
   <link rel="stylesheet" href="css/bootstrap.css" />
   <link rel="stylesheet" href="css/base.css" />
 </head>
-<body>
+<body id="landing">
 
   <div id="wrapper">
-    <header id="header" class="navbar navbar-inverse navbar-fixed-top"></header>
     <form id="login" method="POST" action="/session">
       <input type="text" name="email" placeholder="email" />
-      <input type="password" name="password" placeholder="password" />
+      <span class="error" rel="email"></span>
+      <input type="password" name="password" placeholder="password" autocomplete="off" />
+      <span class="error" rel="password"></span>
       <input type="submit" class="btn" />
+      <a href="#" rel="signup">Not dataful yet? Click here to sign up.</a>
+    </form>
+    <form id="signup" method="POST" action="/user" style="display: none">
+      <input type="text" name="email" placeholder="email" />
+      <span class="error" rel="email"></span>
+      <input type="password" name="password" placeholder="password" autocomplete="off" />
+      <span class="error" rel="password"></span>
+      <input type="password" name="confirm_password" placeholder="confirm password" autocomplete="off" />
+      <span class="error" rel="confirm_password"></span>
+      <input type="submit" class="btn" />
+      <a href="#" rel="login">Already dataful? Click here to log in.</a>
     </form>
   </div>
-  <div id="modal" class="modal"></div>
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script>
+    $(function() {
+
+      var $forms = $('form'),
+          $errors = $forms.find('.error');
+      
+      $forms.find('a').click(function(e) {
+        e.preventDefault();
+        var id = $(this).closest('form').hide().end().attr('rel');
+        $forms.find('.error').hide();
+        $('#' + id).show();
+      });
+
+      $forms.submit(function(e) {
+        e.preventDefault();
+
+        var $this = $(this),
+            data = $this.serialize();
+
+        $.post($this.attr('action'), data)
+          .success(function() { window.location.reload(); })
+          .error(function(xhr) { 
+            var errors = JSON.parse(xhr.responseText),
+                message;
+            for (var key in errors) {
+              message = typeof errors[key] === 'string' ? errors[key] : errors[key].join('<br />');
+              $this.find('[rel=' + key + ']').html(message).show();
+            }
+          });     
+      });
+    });
+  </script>
 </body>
 </html>

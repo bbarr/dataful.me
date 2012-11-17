@@ -2,6 +2,34 @@ body {
   padding-top: 40px;
 }
 
+.if_empty { display: none; }
+.empty .if_empty { display: inherit; }
+
+ul {
+  margin: 0;
+}
+
+ul .if_empty {
+  background: #eee;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#landing input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#landing form {
+  margin: 0 auto; 
+  width: 240px;
+}
+
+form .error {
+  color: #ff0000;
+}
+
 .modal {
   display: none;
 }
@@ -53,21 +81,23 @@ body {
   border: 1px solid #eee;
   margin: 0 0 10px;
   border-radius: 5px;
-  padding-bottom: 10px;
+  padding: 10px;
+}
+
+.stat .remove {
+  display: inline-block
 }
 
 .stat p {
-  background: #ddd;
-  padding: 5px 10px;
   font-style: italic;
   font-size: 18px;
 }
 
 .stat span {
+  float: right;
   text-align: center;
   font-size: 20px;
   color: #555;
-  display: block;
 }
 
 .entry {
@@ -85,4 +115,8 @@ body {
 
 .entry p {
   margin: 0;
+}
+
+.entry .remove {
+  float: right;
 }

@@ -1,10 +1,12 @@
 define([
-  'backbone'
-], function(Backbone) {
+  'backbone',
+  'app/models/entry'
+], function(Backbone, Entry) {
   
   return Backbone.Collection.extend({
 
-    url: '/entries'
+    url: '/entries',
+    model: Entry
 
   });
 });

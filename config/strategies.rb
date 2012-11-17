@@ -13,11 +13,10 @@ Warden::Strategies.add(:password) do
       if user.authenticate params['password']
         success!(user)
       else
-        errors.add(:login, "Password incorrect")
-        fail!
+        errors.add(:password, "Password incorrect")
       end
     else
-      errors.add(:login, 'Email not found')
+      errors.add(:email, 'Email not found')
       fail!    
     end
   end

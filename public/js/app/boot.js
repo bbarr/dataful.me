@@ -1,4 +1,5 @@
 require([
+  'app/models/user',
   'app/collections/stats',
   'app/collections/entries',
   'app/views/input',
@@ -7,6 +8,7 @@ require([
   'app/views/header',
   'app/templates'
 ], function(
+  User,
   Stats, 
   Entries, 
   InputView, 
@@ -16,7 +18,8 @@ require([
 ) {
 
   var stats = new Stats,
-      entries = new Entries;
+      entries = new Entries,
+      user = new User;
     
   new InputView({
     entries: entries,
@@ -24,14 +27,15 @@ require([
   });
 
   new StatsView({
-    collection: stats
+    collection: stats,
+    entries: entries
   });
 
   new EntriesView({
     collection: entries
   });
 
-  new HeaderView().render();
+  new HeaderView({ model: user }).render();
 
   stats.fetch();
   entries.fetch();
