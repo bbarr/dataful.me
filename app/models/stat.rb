@@ -1,19 +1,16 @@
 class Stat
   include MongoMapper::Document
-  include Statician
-
-  before_validation :format
 
   key :raw, String, required: true
 
   belongs_to :user
 
-  def format
-    self.raw = raw.downcase.gsub('"', "'")
+  def value(limiting_date=nil)
+    Statician.new(user).calculate(raw, limiting_date)
   end
 
-  def value
-    @value ||= calculate(raw)
+  def action
+    raw.split(' ')[0]
   end
 
   def serializable_hash options={}

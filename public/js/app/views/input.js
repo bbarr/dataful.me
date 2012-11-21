@@ -12,12 +12,10 @@ define([
     },
 
     initialize: function(config) {
-
       this.entries = config.entries;
       this.stats = config.stats;
-
-      this.feedback = new Feedback;
-
+      this.entries.on('add', function() { this.hub.trigger('feedback', 'Created entry.'); }, this);
+      this.stats.on('add', function() { this.hub.trigger('feedback', 'Created stat.'); }, this);
       this.$form = this.$el.find('form');
       this.$input = this.$form.find('input');
     },
@@ -30,13 +28,16 @@ define([
       if (!text) return;
       
       var collection = this.is_entry(text) ? this.entries : this.stats;
+      this.hub.trigger('feedback', 'Creating ' + (collection === this.entries ? 'entry' : 'stat') + '.', {
+        sticky: true 
+      });
       collection.create({ raw: text }, { wait: true });
 
       this.$input.val('');
     },
 
     is_entry: function(text) {
-      return !(/^count|^average/.test(text));
+      return !(/^count|^average|^usual|^sum/.test(text));
     }
   });
 });

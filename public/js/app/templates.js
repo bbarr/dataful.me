@@ -27,13 +27,14 @@ define([ 'marker' ], function(Marker) {
     this
       .div({ className: 'entry' })
         .a({ href: '#', className: 'remove' }, 'remove', true)
-        .p(entry.get('category'), true)
         .span(date_str, true)
         .dl()
           .each(entry.get('tags'), function(val, key) {
             this
-              .dt(key, true)
-              .dd(val, true);
+              .div()
+                .dt(key, true)
+                .dd(val || '', true)
+              .end()
           })
         .end()
       .end();
@@ -50,13 +51,17 @@ define([ 'marker' ], function(Marker) {
   Marker.register('stat', function(stat) {
 
     var value = stat.get('value');
-    value = typeof value === 'number' ? value : (value[0] + ' ' + value[1] + '%');
+
+    if (typeof value !== 'number') {
+      var list = _(value).map(function(v, k) { return [k, v] });
+      var max = _(list).max(function(a) { return a[1] });
+      value = max[0] + ' ' + max[1] + '%';
+    }
 
     this
-      .div({ className: 'stat' })
-        .span(value, true) 
-        .p(stat.get('raw'), true)
-        .a({ href: '#', className: 'remove' }, 'remove', true)
-        .div({ className: 'chart', cache: 'chart' }, true);
+      .span(value, true) 
+      .p(stat.get('raw'), true)
+      .a({ href: '#', className: 'remove' }, 'remove', true)
+      .div({ className: 'chart', cache: 'chart' }, true);
   });
 });

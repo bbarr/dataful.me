@@ -6,6 +6,8 @@ define([
   return Backbone.View.extend({
     
     template: 'stat',
+    className: 'stat',
+    tagName: 'li',
     events: {
       'click .remove': 'remove'
     },
@@ -17,7 +19,7 @@ define([
     render: function() {
       var html = Marker.render(this.template, this.model);
       this.$el.append(html);
-      this.chart = new ChartView({ el: html.cache.chart }).render();
+      this.chart = new ChartView({ el: html.cache.chart, model: this.model }).render();
       return this;
     },
 

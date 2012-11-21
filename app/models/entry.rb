@@ -13,6 +13,7 @@ class Entry
   private
 
     def parse
+      @custom_timing = {}
       chunks = raw.split(' ')
       self.tags = parse_tags(chunks)
       self.created_at = generate_created_at unless @custom_timing.empty?
@@ -33,10 +34,13 @@ class Entry
     end
 
     def generate_created_at
-      date = @custom_timing[:date] ? DateTime.parse(@custom_timing[:date]) : DateTime.new 
+      p @custom_timing
+      date = @custom_timing[:date] ? DateTime.parse(@custom_timing[:date]) : DateTime.now
+      p date
       if time = @custom_timing[:time]
         hours, minutes, seconds = time.split(':')
-        date.change({ hours: hours, minutes: minutes, seconds: seconds })
+        date = DateTime.new(date.year, date.month, date.day, hours.to_i, (minutes || date.minutes).to_i, 0, 0 )
+        p date
       end
       date
     end

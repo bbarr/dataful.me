@@ -9,15 +9,13 @@ define({
     var matches = str.match(this.TIME_RE);
     if (!matches) return;
 
-    var date = new Date(matches[2].replace('T', ' '));
-    if (!date.getDate()) {
-      var now = new Date,
-          parts = matches[2].split(':');
-      now.setHours(parts[0]);
-      now.setMinutes(parts[1]);
-      date = now;
-    }
+    var now = new Date,
+        parts = matches[2].split(':');
+    now.setHours(parts[0]);
+    now.setMinutes(parts[1]);
 
-    return str.replace(this.TIME_RE, '$1' + date.toISOString());
+    var matches = now.toISOString().match(/T(\d+:\d\d)/);
+
+    return str.replace(this.TIME_RE, '$1' + matches[1]);
   }
 });

@@ -6,6 +6,7 @@ require([
   'app/views/stats',
   'app/views/entries',
   'app/views/header',
+  'app/views/feedback',
   'app/templates'
 ], function(
   User,
@@ -14,7 +15,8 @@ require([
   InputView, 
   StatsView, 
   EntriesView,
-  HeaderView
+  HeaderView,
+  FeedbackView
 ) {
 
   var stats = new Stats,
@@ -36,6 +38,8 @@ require([
   });
 
   new HeaderView({ model: user }).render();
+
+  new FeedbackView();
 
   stats.fetch();
   entries.fetch();

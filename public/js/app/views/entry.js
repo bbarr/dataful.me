@@ -8,6 +8,8 @@ define([
       'click .remove': 'remove'
     },
 
+    tagName: 'li',
+
     initialize: function() {
       this.model.on('destroy', this.remove_html, this);
     },

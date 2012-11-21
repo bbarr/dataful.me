@@ -8,7 +8,12 @@ require.config({
     },
     backbone: {
       deps: [ 'underscore', 'vendor/jquery' ],
-      exports: 'Backbone'
+      exports: 'Backbone',
+      init: function(_) {
+        var events = _({}).extend(this.Backbone.Events);
+        this.Backbone.View.prototype.hub = events;
+        return this.Backbone;
+      }
     },
     bootstrap: [ 'vendor/jquery' ],
     charts: [ 'goog' ]
