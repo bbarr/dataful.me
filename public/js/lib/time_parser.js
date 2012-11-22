@@ -10,9 +10,14 @@ define({
     if (!matches) return;
 
     var now = new Date,
-        parts = matches[2].split(':');
-    now.setHours(parts[0]);
-    now.setMinutes(parts[1]);
+        parts = matches[2].split(':'),
+        hours = parts[0],
+        ampm = matches[2].match(/am|AM|pm|PM/);
+
+    if (parts[1]) now.setMinutes(parts[1].replace(/\D/g, ''));
+    else now.setMinutes('00');
+    if (ampm[0] && ampm[0].toLowerCase() === 'pm') hours = parseInt(hours, 10) + 12
+    now.setHours(hours);
 
     var matches = now.toISOString().match(/T(\d+:\d\d)/);
 
