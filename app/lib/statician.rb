@@ -286,10 +286,6 @@ class Statician
     query = queryize(hash)
     query[:created_at] = { "$lt" => end_limiting_date } if end_limiting_date
     query[:created_at]["$gt"] = start_limiting_date if start_limiting_date
-    p @action
-    p @subject_value
-    p hash
-    p query[:created_at]
 
     entries = query[:NO_QUERY] ? [] : @user.entries.where(query)
     process(entries)

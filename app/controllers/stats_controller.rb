@@ -19,7 +19,11 @@ class StatsController < BaseController
         date = date.yesterday
         values
       end
-      ok data
+      if data[:values].find { |v| v[:value] != '' }
+        ok data
+      else
+        missing
+      end
     else
       missing
     end

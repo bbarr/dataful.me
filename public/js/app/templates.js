@@ -53,9 +53,13 @@ define([ 'marker' ], function(Marker) {
     var value = stat.get('value');
 
     if (typeof value !== 'number') {
-      var list = _(value).map(function(v, k) { return [k, v] });
-      var max = _(list).max(function(a) { return a[1] });
-      value = max[0] + ' ' + max[1] + '%';
+      if (value) {
+        var list = _(value).map(function(v, k) { return [k, v] });
+        var max = _(list).max(function(a) { return a[1] });
+        value = max[0] + ' ' + max[1] + '%';
+      } else {
+        value = 'N/A'
+      }
     }
 
     this

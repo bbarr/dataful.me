@@ -34,13 +34,10 @@ class Entry
     end
 
     def generate_created_at
-      p @custom_timing
       date = @custom_timing[:date] ? DateTime.parse(@custom_timing[:date]) : DateTime.now
-      p date
       if time = @custom_timing[:time]
         hours, minutes, seconds = time.split(':')
         date = DateTime.new(date.year, date.month, date.day, hours.to_i, (minutes || date.minutes).to_i, 0, 0 )
-        p date
       end
       date
     end

@@ -19,7 +19,9 @@ define([
     render: function() {
       var html = Marker.render(this.template, this.model);
       this.$el.append(html);
-      this.chart = new ChartView({ el: html.cache.chart, model: this.model }).render();
+      if (this.model.has_value()) {
+        this.chart = new ChartView({ el: html.cache.chart, model: this.model }).render();
+      }
       return this;
     },
 

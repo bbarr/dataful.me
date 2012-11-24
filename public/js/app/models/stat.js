@@ -10,6 +10,10 @@ define([
       if (with_parsed_time) {
         this.set('raw', with_parsed_time);
       }
+    },
+
+    has_value: function() {
+      return this.get('value') !== '';
     }
   });
 });
