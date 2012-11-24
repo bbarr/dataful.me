@@ -44,6 +44,7 @@ define([
       var chart_data = [[ 'Date', 'Average' ]];
 
       _(data.values.reverse()).each(function(v) {
+        if (v.value === '') v.value = null;
         chart_data.push([ this.extract_date_string(v.date), v.value ]); 
       }.bind(this));
 

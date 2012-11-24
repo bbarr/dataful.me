@@ -321,7 +321,7 @@ class Statician
   end
 
   def calculate_average items
-    calculate_sum(items) / items.length
+    (calculate_sum(items) / items.length).round(2)
   end
 
   def calculate_usual items
