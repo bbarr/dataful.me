@@ -34,7 +34,7 @@ class Entry
     end
 
     def generate_created_at
-      date = @custom_timing[:date] ? DateTime.parse(@custom_timing[:date]) : DateTime.now
+      date = @custom_timing[:date] ? DateTime.strptime(@custom_timing[:date], '%m/%d/%Y') : DateTime.now
       if time = @custom_timing[:time]
         hours, minutes, seconds = time.split(':')
         date = DateTime.new(date.year, date.month, date.day, hours.to_i, (minutes || date.minutes).to_i, 0, 0 )

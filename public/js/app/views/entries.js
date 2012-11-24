@@ -14,7 +14,6 @@ define([
     },
 
     render: function() {
-
       var html = Marker.render(this.template, this.collection);
       this.$list = $(html.cache.list);
 

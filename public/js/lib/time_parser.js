@@ -1,13 +1,21 @@
 define({
 
   TIME_RE: /(TIME:)(\S+)/,
+  DATE_RE: /(DATE:)(\S+)/,
 
   parse: function(str) {
 
     if (!str) return;
 
     var matches = str.match(this.TIME_RE);
-    if (!matches) return;
+    if (!matches) {
+      var date_matches = str.match(this.DATE_RE);
+      if (date_matches) {
+        var date = new Date(date_matches[2]);
+        return str + ' TIME:' + date.toISOString().match(/T(\d+:\d\d)/)[1];
+      }
+      return;
+    }
 
     var now = new Date,
         parts = matches[2].split(':'),
