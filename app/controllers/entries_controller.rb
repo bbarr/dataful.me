@@ -16,7 +16,7 @@ class EntriesController < BaseController
   end
 
   delete "/:id" do
-    entry = current_user.entries.find params[:id]
+    entry = current_user.entries.find(params[:id])
     if entry and entry.destroy
       ok
     else

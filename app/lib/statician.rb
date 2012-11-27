@@ -296,6 +296,7 @@ class Statician
   end
 
   def process_count entries
+    return 0 if entries.empty?
     entries.count
   end
 
@@ -312,6 +313,7 @@ class Statician
   end
 
   def process_sum entries
+    return 0 if entries.empty?
     tag_values = entries.map { |e| e.tags[@subject_value] }.compact
     calculate_sum(tag_values)
   end
