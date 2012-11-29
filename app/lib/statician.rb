@@ -122,6 +122,10 @@ module Parser
       active_subject.add_tag(token)
     end
 
+    def parse_date token
+      active_subject.add_tag(token)
+    end
+
     def parse_colon token
       active_subject.unresolved_tag = true
     end

@@ -8,8 +8,8 @@ define([
     url: '/entries',
     model: Entry,
     
-    comparator: function(first, second) {
-      return +(new Date(first.get('created_at'))) < +(new Date(second.get('created_at')));
+    comparator: function(e) {
+      return -(new Date(e.get('created_at')).getTime())
     }
   });
 });

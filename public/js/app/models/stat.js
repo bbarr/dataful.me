@@ -6,9 +6,15 @@ define([
   return Backbone.Model.extend({
     
     initialize: function() {
-      var with_parsed_time = time_parser.parse(this.get('raw'));
-      if (with_parsed_time) {
-        this.set('raw', with_parsed_time);
+    },
+
+    ensure_date_time: function() {
+      // this needs updating
+      if (this.isNew()) {
+        var with_parsed_time = time_parser.parse(this.get('raw'));
+        if (with_parsed_time) {
+          this.set('raw', with_parsed_time);
+        }
       }
     },
 

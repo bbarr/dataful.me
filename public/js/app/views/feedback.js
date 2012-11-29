@@ -8,11 +8,16 @@ define([
     
     initialize: function() {
       this.hub.on('feedback', this.render, this);
+      this.open = true;
     },
 
     render: function(msg, options) {
-      console.log(msg);
-      this.$el.html(msg);
+      return;
+      this.$el
+        .show('fast')
+        .html(msg)
+        .delay(3000)
+        .hide('slow');
     }
   });
 });

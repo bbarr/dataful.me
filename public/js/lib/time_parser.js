@@ -1,34 +1,38 @@
 define({
 
-  TIME_RE: /(TIME:)(\S+)/,
-  DATE_RE: /(DATE:)(\S+)/,
+  TIME_RE: /( TIME:)(\S+)/,
+  DATE_RE: /( DATE:)(\S+)/,
 
   parse: function(str) {
 
     if (!str) return;
 
-    var matches = str.match(this.TIME_RE);
-    if (!matches) {
-      var date_matches = str.match(this.DATE_RE);
-      if (date_matches) {
-        var date = new Date(date_matches[2]);
-        return str + ' TIME:' + date.toISOString().match(/T(\d+:\d\d)/)[1];
+    var date,
+        date_matches = str.match(this.DATE_RE),
+        time_matches = str.match(this.TIME_RE);
+
+    if (date_matches) {
+      date = new Date(date_matches[2]);
+    } else {
+      date = new Date;
+    }
+    
+    if (time_matches) {
+      var parts = time_matches[2].split(':');
+      if (parts[1]) {
+        hours = parts[0];
+        minutes = parseInt(parts[1], 10);
+      } else {
+        hours = parseInt(parts[0], 10);
+        minutes = '00';
       }
-      return;
+
+      if (parts[0].substr(-2).toLowerCase() === 'pm') hours += 12;
+      date.setHours(hours);
+      date.setMinutes(minutes);
     }
 
-    var now = new Date,
-        parts = matches[2].split(':'),
-        hours = parts[0],
-        ampm = matches[2].match(/am|AM|pm|PM/);
-
-    if (parts[1]) now.setMinutes(parts[1].replace(/\D/g, ''));
-    else now.setMinutes('00');
-    if (ampm[0] && ampm[0].toLowerCase() === 'pm') hours = parseInt(hours, 10) + 12
-    now.setHours(hours);
-
-    var matches = now.toISOString().match(/T(\d+:\d\d)/);
-
-    return str.replace(this.TIME_RE, '$1' + matches[1]);
+    str = str.replace(this.TIME_RE, '').replace(this.DATE_RE, '');
+    return str + ' DATE:' + (date.getUTCMonth() + 1) + '/' + date.getUTCDate() + '/' + date.getUTCFullYear() + ' TIME:' + date.getUTCHours() + ':' + date.getUTCMinutes();
   }
 });

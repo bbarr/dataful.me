@@ -18,6 +18,9 @@ define([
       this.stats.on('add', function() { this.hub.trigger('feedback', 'Created stat.'); }, this);
       this.$form = this.$el.find('form');
       this.$input = this.$form.find('input');
+      setTimeout(function() {
+        this.$input.focus();
+      }.bind(this), 1000);
     },
 
     submit: function(e) {

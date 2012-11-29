@@ -26,7 +26,9 @@ define([ 'marker' ], function(Marker) {
 
     this
       .div({ className: 'entry' })
-        .a({ href: '#', className: 'remove' }, 'remove', true)
+        .a({ href: '#', className: 'remove' })
+          .i({ className: 'icon-trash' }, true)
+        .end()
         .span(date_str, true)
         .dl()
           .each(entry.get('tags'), function(val, key) {
@@ -63,9 +65,13 @@ define([ 'marker' ], function(Marker) {
     }
 
     this
-      .span(value, true) 
-      .p(stat.get('raw'), true)
-      .a({ href: '#', className: 'remove' }, 'remove', true)
+      .p()
+        .span(value, true) 
+        .a({ href: '#', className: 'remove' })
+          .i({ className: 'icon-trash' }, true)
+        .end()
+        .em(stat.get('raw'), true)
+      .end()
       .div({ className: 'chart', cache: 'chart' }, true);
   });
 });
