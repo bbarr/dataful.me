@@ -41,6 +41,10 @@ require([
 
   new FeedbackView();
 
+  setTimeout(function() {
+    $('#modal').modal('show');
+  }, 1000);
+
   stats.fetch();
   entries.fetch();
 

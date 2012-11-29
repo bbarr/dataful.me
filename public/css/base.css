@@ -2,6 +2,10 @@ body {
   padding-top: 40px;
 }
 
+#modal {
+  padding: 10px;
+}
+
 .if_empty { display: none; }
 .empty .if_empty { display: inherit; }
 
