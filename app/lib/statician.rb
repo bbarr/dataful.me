@@ -340,6 +340,7 @@ class Statician
     cache.each do |k, v|
       values[k] = (v / items.count.to_f * 100).round
     end
-    values
+    p values
+    values.max { |a, b| a[1] <=> b[1] }
   end
 end

@@ -3,7 +3,7 @@ class EntriesController < BaseController
   requires_user
 
   get "/" do
-    ok current_user.entries.sort(:created_at.desc).limit(20)
+    ok current_user.entries.sort(:created_at.desc).limit(10)
   end
 
   post "/" do

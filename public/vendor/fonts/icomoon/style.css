@@ -1,0 +1,64 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot');
+	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.woff') format('woff'),
+		url('fonts/icomoon.ttf') format('truetype'),
+		url('fonts/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'icomoon';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+[class*="icon-"]:before {
+  font-family: inherit;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+.icon-exit, .icon-enter, .icon-wrench, .icon-plus, .icon-minus, .icon-eye, .icon-eye-blocked {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-exit:before {
+	content: "\e000";
+}
+.icon-enter:before {
+	content: "\e001";
+}
+.icon-wrench:before {
+	content: "\e002";
+}
+.icon-plus:before {
+	content: "\e003";
+}
+.icon-minus:before {
+	content: "\e004";
+}
+.icon-eye:before {
+	content: "\e005";
+}
+.icon-eye-blocked:before {
+	content: "\e006";
+}
