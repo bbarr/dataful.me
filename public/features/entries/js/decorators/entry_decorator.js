@@ -12,5 +12,7 @@ define(function(require) {
     
     this.tagArray = generateTagArray(this.tags || {});
     this.link('tags', 'tagArray', generateTagArray);
+
+    this.meta_id = function() { return this.meta('id'); };
   }
 });

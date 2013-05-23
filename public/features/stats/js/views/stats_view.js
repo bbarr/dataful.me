@@ -14,12 +14,16 @@ define(function(require) {
       var filtered = this.stats.filter(function(s) { return s.meta('id') == id });
       cb(filtered[0]);
     }, this);
+
+    hub.on('removedStat', function(stat) {
+      this.stats = this.stats.filter(function(s) { return s !== stat; });
+    }, this);
   };
 
   StatsView.prototype = {
 
     add: function() {
-      this.stats.unshift(new Stat);
+      this.stats.unshift(new Stat({ editing: true }));
     },
 
     cancel: function() {

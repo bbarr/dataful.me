@@ -13,6 +13,16 @@ define(function(require) {
 
   StatView.prototype = {
 
+    edit: function() {
+      this.stat.editing = true;
+    },
+
+    remove: function() {
+      var self = this;
+      this.stat.destroy().success(function() {
+        hub.trigger('removedStat', self.stat);
+      });
+    }
   };
 
   hub.trigger('registerView', StatView, template);

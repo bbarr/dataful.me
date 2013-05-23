@@ -74,8 +74,8 @@ button {
   border: none;
   background: transparent;
   color: $smoke;
-  font-size: 36px;
-  line-height: 36px;
+  font-size: 30px;
+  line-height: 30px;
   &:hover {
     color: #fff;
   }
@@ -127,7 +127,13 @@ header {
 }
 
 #entries {
+  button {
+    float: right;
+  }
   li {
+    button {
+      font-size: 20px;
+    }
     border-bottom: 1px solid $smoke;
     font-family: Helvetica;
     font-size: 14px;
@@ -142,39 +148,31 @@ header {
     float: right;
   }
   li {
+    button {
+      font-size: 20px;
+    }
     border-bottom: 1px solid $smoke;
     padding: 0 0 20px;
-    margin-bottom: 20px;
+    margin-top: 20px;
     &:last-child { 
-      margin-bottom: 0;
       border: none; 
     }
   }
 }
 
-#input {
-
-  h3 {
-  }
-  
-  input {
-    background: $charcoal;
-    box-sizing: border-box;
-    font-size: 30px;
-    height: auto;
-    margin-top: 7px;
-    font-weight: normal;
-    font-family: Helvetica;
-    &:focus {
-      outline: none;
-      border-color: $yellow;
-      box-shadow: 0 0 10px $yellow;
-      color: $white;
-    }
-  }
-
-  #feedback {
-    text-align: center;
-    margin-top: 20px;
+#content input {
+  background: $charcoal;
+  box-sizing: border-box;
+  font-size: 26px;
+  height: auto;
+  width: 100%;
+  font-weight: normal;
+  font-family: Helvetica;
+  margin: 0;
+  &:focus {
+    outline: none;
+    border-color: $yellow;
+    box-shadow: 0 0 10px $yellow;
+    color: $white;
   }
 }

@@ -1,12 +1,11 @@
 class Entry
   include MongoMapper::Document
 
-  attr_accessor :raw
-
   before_validation :parse
 
   timestamps!
   key :tags, Object, :default => {}
+  key :raw, String
 
   belongs_to :user
 

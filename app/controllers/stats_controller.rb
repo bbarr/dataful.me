@@ -38,6 +38,16 @@ class StatsController < BaseController
     end
   end
 
+  put "/:id" do
+    stat = current_user.stats.find params[:id]
+    stat.update_attributes params
+    if stat.save
+      ok stat
+    else
+      missing
+    end
+  end
+
   get "/:id" do
     stat = current_user.stats.find params[:id]
     if stat

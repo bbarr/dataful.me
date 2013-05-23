@@ -5,6 +5,7 @@ define(function(require) {
 
   function Entry() {
     this.key('tags');
+    this.key('raw');
   };
 
   Entry.prototype = {

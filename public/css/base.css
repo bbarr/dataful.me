@@ -53,8 +53,8 @@ button {
   border: none;
   background: transparent;
   color: #747d7d;
-  font-size: 36px;
-  line-height: 36px; }
+  font-size: 30px;
+  line-height: 30px; }
   button:hover {
     color: #fff; }
 
@@ -87,12 +87,16 @@ header {
 #snapshot.minimized p {
   display: none; }
 
+#entries button {
+  float: right; }
 #entries li {
   border-bottom: 1px solid #747d7d;
   font-family: Helvetica;
   font-size: 14px;
   line-height: 1.2em;
   padding: 10px 0; }
+  #entries li button {
+    font-size: 20px; }
   #entries li:last-child {
     border: none; }
 
@@ -101,24 +105,23 @@ header {
 #stats li {
   border-bottom: 1px solid #747d7d;
   padding: 0 0 20px;
-  margin-bottom: 20px; }
+  margin-top: 20px; }
+  #stats li button {
+    font-size: 20px; }
   #stats li:last-child {
-    margin-bottom: 0;
     border: none; }
 
-#input input {
+#content input {
   background: #383838;
   box-sizing: border-box;
-  font-size: 30px;
+  font-size: 26px;
   height: auto;
-  margin-top: 7px;
+  width: 100%;
   font-weight: normal;
-  font-family: Helvetica; }
-  #input input:focus {
+  font-family: Helvetica;
+  margin: 0; }
+  #content input:focus {
     outline: none;
     border-color: yellow;
     box-shadow: 0 0 10px yellow;
     color: white; }
-#input #feedback {
-  text-align: center;
-  margin-top: 20px; }

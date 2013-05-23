@@ -8,10 +8,22 @@ define(function(require) {
     var self = this;
     this.entries = [];
     Entry.load().success(function(entries) { self.entries = entries; });
+
+    hub.on('getEntryById', function(id, cb) {
+      var filtered = this.entries.filter(function(e) { return e.meta('id') == id });
+      cb(filtered[0]);
+    }, this);
+
+    hub.on('removedEntry', function(entry) {
+      this.entries = this.entries.filter(function(e) { return e !== entry; });
+    }, this);
   };
 
   EntriesView.prototype = {
 
+    add: function() {
+      this.entries.unshift(new Entry({ editing: true }));
+    }
   };
 
   hub.trigger('registerView', EntriesView, template);

@@ -15,6 +15,16 @@ class EntriesController < BaseController
     end
   end
 
+  put "/:id" do
+    entry = current_user.entries.find(params[:id])
+    entry.update_attributes params
+    if entry.save
+      ok
+    else
+      missing
+    end
+  end
+
   delete "/:id" do
     entry = current_user.entries.find(params[:id])
     if entry and entry.destroy

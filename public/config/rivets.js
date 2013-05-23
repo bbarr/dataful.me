@@ -5,6 +5,7 @@ require([ 'rivets', 'moment', 'hub' ], function(rivets, moment, hub) {
   rivets.configure({
     adapter: {
       subscribe: function(obj, keypath, callback) {
+        if (!obj.watch) debugger;
         obj.watch(keypath, callback);
       },
       unsubscribe: function(obj, keypath, callback) {
@@ -41,6 +42,7 @@ require([ 'rivets', 'moment', 'hub' ], function(rivets, moment, hub) {
     return moment(value).format('MMM')
   }
 
+  rivets.formatters.ternary = function(v, a, b) { return v ? a : b; }
   rivets.formatters.toBoolean = function(v) { return !!v; };
   rivets.formatters.stringify = function(v) { return JSON.stringify(v); }
 

@@ -21,10 +21,6 @@
 	-webkit-font-smoothing: antialiased;
 }
 
-[class*="icon-"]:before {
-  font-family: inherit;
-}
-
 /* Use the following CSS code if you want to have a class per icon */
 /*
 Instead of a list of all class selectors,

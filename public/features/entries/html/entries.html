@@ -1,12 +1,7 @@
 <div>
+  <button data-on-click=":add"><i class="icon-plus"></i></button>
   <h3>Entries</h3>
   <ul>
-    <li data-each-entry=".entries">
-      <p data-text="entry:created_at | dateTime"></p>
-      <p data-each-tag="entry.tagArray">
-        <span data-text="tag:key"></span>
-        <span data-show="tag:val | toBoolean">: <span data-text="tag:val"></span></span>
-      </p>
-    </li>
+    <li data-each-entry=".entries" data-data-view="entry.editing | ternary EntryFormView EntryView" data-data-view-data="entry:meta_id"></li>
   </ul>
 </div>
