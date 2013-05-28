@@ -13,7 +13,7 @@ class User
   key :encrypted_password, String
 
   many :entries
-  many :stats
+  many :statistics
 
   def match_passwords
     p email

@@ -4,10 +4,10 @@ define(function(require) {
       template = require('text!../../html/entry.html'),
       Entry = require('../models/entry');
 
-  function EntryView(id) {
+  function EntryView(args) {
     this.entry = {};
     var self = this;
-    hub.trigger('getEntryById', id, function(e) { self.entry = e; });
+    hub.trigger('getEntryById', args[0], function(e) { self.entry = e; });
   };
 
   EntryView.prototype = {

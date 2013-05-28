@@ -2,6 +2,10 @@ define(function(require) {
 
   return function() {
 
+    this.viewName = function() {
+      return (this.editing ? 'EntryFormView' : 'EntryView') + ' ' + this.meta('id');
+    }
+
     function generateTagArray(tags) {
       var arr = [];
       for (var k in tags) {
@@ -12,7 +16,5 @@ define(function(require) {
     
     this.tagArray = generateTagArray(this.tags || {});
     this.link('tags', 'tagArray', generateTagArray);
-
-    this.meta_id = function() { return this.meta('id'); };
   }
 });

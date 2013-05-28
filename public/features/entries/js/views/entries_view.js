@@ -23,6 +23,12 @@ define(function(require) {
 
     add: function() {
       this.entries.unshift(new Entry({ editing: true }));
+    },
+
+    subViewName: function() {
+      return function(id) {
+        return (this.entry.editing ? 'EntryFormView' : 'EntryView') + ' ' + id;
+      }
     }
   };
 

@@ -6,6 +6,14 @@
   font-weight: normal;
   font-style: normal; }
 
+[class^="icon-"] {
+  background-image: none;
+  background-repeat: none;
+  display: block;
+  height: auto;
+  width: auto;
+  margin: 0; }
+
 h3 {
   color: #747d7d;
   font-size: 40px;
@@ -13,6 +21,11 @@ h3 {
 
 form {
   margin: 0; }
+
+select {
+  width: auto;
+  margin: 0;
+  -webkit-appearance: none; }
 
 ul {
   margin: 0;
@@ -100,28 +113,72 @@ header {
   #entries li:last-child {
     border: none; }
 
+#stats #advanced input {
+  width: 100%;
+  font-size: 20px; }
+#stats .stat-gui fieldset span {
+  color: #747d7d; }
+  #stats .stat-gui fieldset span.active {
+    color: white; }
+#stats .stat-gui select {
+  font-size: 20px;
+  height: 35px;
+  vertical-align: baseline;
+  background: #383838;
+  color: inherit;
+  border: none;
+  font-family: 'raleway_thin'; }
+  #stats .stat-gui select:focus {
+    outline: none;
+    border-color: yellow;
+    box-shadow: 0 0 10px yellow; }
+#stats .stat-gui [type="number"] {
+  width: 50px; }
+#stats .stat-gui .preview {
+  line-height: 54px;
+  margin: 0;
+  font-size: 24px; }
+#stats .stat-gui p {
+  line-height: 30px;
+  line-height: 50px; }
+#stats .stat-gui fieldset {
+  margin: 0 0 30px 0;
+  display: block; }
+#stats .stat-gui button {
+  float: none;
+  display: inline; }
 #stats button {
   float: right; }
+#stats .nav {
+  font-size: 16px;
+  margin: 0; }
+  #stats .nav li {
+    border: none;
+    margin: 0; }
 #stats li {
   border-bottom: 1px solid #747d7d;
   padding: 0 0 20px;
-  margin-top: 20px; }
+  margin-bottom: 20px; }
   #stats li button {
-    font-size: 20px; }
+    font-size: 20px;
+    height: 50px;
+    vertical-align: middle; }
   #stats li:last-child {
-    border: none; }
+    border: none;
+    margin-bottom: 0;
+    padding-bottom: 0; }
 
 #content input {
   background: #383838;
   box-sizing: border-box;
-  font-size: 26px;
-  height: auto;
-  width: 100%;
+  height: 35px;
+  margin: 0;
   font-weight: normal;
-  font-family: Helvetica;
-  margin: 0; }
+  font-family: 'raleway_thin';
+  font-size: 20px;
+  color: white;
+  border-color: #383838; }
   #content input:focus {
     outline: none;
     border-color: yellow;
-    box-shadow: 0 0 10px yellow;
-    color: white; }
+    box-shadow: 0 0 10px yellow; }

@@ -2,8 +2,21 @@ class MainController < BaseController
 
   get "/" do
     content_type :html
-    file_name = current_user ? 'dashboard' : 'index'
-    File.read(settings.public_folder + "/#{file_name}.html")
+    if current_user
+      redirect to("/dashboard")
+    else
+      erb :index
+    end
+  end
+
+  get "/dashboard" do
+    content_type :html
+    if current_user
+      @tag_keys = Entry.tag_keys_for(current_user)
+      erb :dashboard
+    else
+      redirect to("/")
+    end
   end
 
   post "/unauthenticated" do

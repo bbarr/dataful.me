@@ -1,6 +1,6 @@
 <div>
-  <button data-on-click=":edit"><i class="icon-pencil"></i></button>
-  <button data-on-click=":remove"><i class="icon-remove"></i></button>
+  <button data-tooltip data-toggle="tooltip" title="Edit" data-on-click=":edit"><i class="icon-pencil"></i></button>
+  <button data-tooltip data-toggle="tooltip" title="Delete" data-on-click=":remove"><i class="icon-remove"></i></button>
   <p data-text="entry:created_at | dateTime"></p>
   <p data-each-tag="entry.tagArray">
     <span data-text="tag:key"></span>

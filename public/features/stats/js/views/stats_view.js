@@ -24,9 +24,6 @@ define(function(require) {
 
     add: function() {
       this.stats.unshift(new Stat({ editing: true }));
-    },
-
-    cancel: function() {
     }
   };
 

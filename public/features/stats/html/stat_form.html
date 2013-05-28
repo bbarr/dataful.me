@@ -1,3 +1,70 @@
 <form data-on-submit=":save">
-  <input type="text" autofocus data-value="stat.raw" />
+  <div class="row-fluid">
+    <div class="span10">
+      <div class="stat-gui">
+        <p class="preview" data-show="stat.string | toBoolean">
+          <span data-text="stat.string"></span>
+        </p>
+        <fieldset>
+          <p>I want to know the 
+            <select data-value="stat.action">
+              <option value="">--</option>
+              <option value="count">total count</option>
+              <option value="sum">cummulative sum</option>
+              <option value="average">average value</option>
+              <option value="usual">most common value</option>
+            </select>
+            of
+            <select data-value="stat.subject">
+              <option value="">--</option>
+              <option data-each-tagkey=".tagKeys" data-value="tagkey:value" data-text="tagkey:value"></option>
+            </select>.
+            <span data-class-active="stat.showingFilter">
+              But only for the entries in which
+              <select data-value="stat.filterSubject">
+                <option>--</option>
+                <option data-each-tagkey=".tagKeys" data-value="tagkey:value" data-text="tagkey:value"></option>
+              </select>
+              <select data-value="stat.filterClause">
+                <option value="">--</option>
+                <option value=":*">exists</option>
+                <option value=":">is</option>
+                <option value=":<">is less than</option>
+                <option value=":>">is more than</option>
+              </select>
+              <input type="text" data-hide="stat.existentialFilter" data-value="stat.filterValue" />
+            </span>
+            <span data-class-active="stat.showingTimeFilter">
+              Also, only for the entries that occurred  
+              <select data-value="stat.timeFilterDurationDirection">
+                <option value="">--</option>
+                <option value="less than">less than</option>
+                <option value="more than">more than</option>
+              </select>
+              <input type="number" data-value="stat.timeFilterDuration" />
+              <select data-value="stat.timeFilterUnit" >
+                <option value="">--</option>
+                <option value="m">minute(s)</option>
+                <option value="h">hour(s)</option>
+                <option value="d">days(s)</option>
+              </select>
+              <select data-value="stat.timeFilterDirection">
+                <option value="">--</option>
+                <option value="before">before</option>
+                <option value="after">after</option>
+              </select>
+              <select data-value="stat.timeFilterSubject">
+                <option value="">--</option>
+                <option data-each-tagkey=".tagKeys" data-value="tagkey:value" data-text="tagkey:value"></option>
+              </select>
+            </span>
+          </p>
+        </fieldset>
+      </div>
+    </div>
+    <div class="span2">
+      <button data-toggle="tooltip" title="cancel" data-tooltip type="button" data-on-click=":cancel"><i class="icon-close"></i></button>
+      <button data-toggle="tooltip" title="save" data-tooltip type="button" data-on-click=":save"><i class="icon-floppy"></i></button>
+    </div>
+  </div>
 </form>

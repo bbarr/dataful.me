@@ -9,6 +9,10 @@ define(function(require) {
 
   NavView.prototype = {
 
+    viewSettings: function() {
+      debugger
+    },
+
     logout: function() {
       hub.trigger('logout bitches');
     }

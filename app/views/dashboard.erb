@@ -29,7 +29,18 @@
 
   <div style="display: none" id="modal" class="modal"></div>
   
-  <script src="vendor/js/require.js" data-main="main.js"></script>
+  <script src="vendor/js/require.js"></script>
+  <script>
+    require([ 'main.js' ], function() {
+      require([ 'hub' ], function(hub) {
+        hub.on('requestBaked', function(cb) {
+          cb({
+            tagKeys: <%= @tag_keys.to_json %>
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
 

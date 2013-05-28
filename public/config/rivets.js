@@ -3,19 +3,24 @@ require([ 'rivets', 'moment', 'hub' ], function(rivets, moment, hub) {
   /* Adapater */
 
   rivets.configure({
+    handler: function(context, ev, binding) {
+      hub.trigger('observe');
+      this.call(binding.view.models, ev, context);
+    },
     adapter: {
       subscribe: function(obj, keypath, callback) {
-        if (!obj.watch) debugger;
         obj.watch(keypath, callback);
       },
       unsubscribe: function(obj, keypath, callback) {
         obj.unwatch(keypath, callback);
       },
       read: function(obj, keypath) {
+        hub.trigger('observe');
         return obj[keypath];
       },
       publish: function(obj, keypath, value) {
         obj[keypath] = value;
+        hub.trigger('observe');
       }
     }
   });
@@ -60,18 +65,8 @@ require([ 'rivets', 'moment', 'hub' ], function(rivets, moment, hub) {
     $(el).tooltip();
   }
 
-  // ALWAYS trigger 'observe' (dirty-check models) when a DOM interaction happens
-  // and call preventDefault here by default to keep views clean
-  oldBinder = rivets.binders['on-*']
-  rivets.binders['with-default-on-*'] = {
-    'function': true,
-    routine: function(el, value) {
-      oldBinder.routine.call(this, el, function(e) {
-        hub.trigger('observe', 1000);
-        value.call(this, e);
-      });
-    }
-  };
+  // call preventDefault here by default to keep views clean
+  rivets.binders['with-default-on-*'] = rivets.binders['on-*'];
   rivets.binders['on-*'] = {
     "function": true,
     routine: function(el, value) {

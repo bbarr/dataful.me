@@ -3,6 +3,7 @@ define(function(require) {
   var hub = require('hub'),
       utils = require('jsmapper/utils'),
       observable = require('jsmapper/observable'),
+      rivets = require('rivets'),
       views, bindings;
 
   views = {
@@ -82,23 +83,25 @@ define(function(require) {
       var name = el.getAttribute('data-view');
       if (!name) return;
 
-      var view = views.cache[name];
+      var args = name.split(' ');
+      var viewName = args.shift();
+      var view = views.cache[viewName];
       if (!view) return;
       
       var binding = bindings.find(el);
       if (binding) {
-        if (binding.view.name === name) return;
+        if (binding.view.name === viewName) return;
         else {
           bindings.reset(binding);
         }
       }
 
-      scanner.bindAndRender(el, view);
+      scanner.bindAndRender(el, view, args);
     },
 
-    bindAndRender: function(el, view) {
+    bindAndRender: function(el, view, args) {
 
-      var viewInstance = new view.Constructor(el.getAttribute('data-view-data'));
+      var viewInstance = new view.Constructor(args);
       if (!view.template) return;
 
       var html = this.render(view.template);

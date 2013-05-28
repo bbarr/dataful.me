@@ -4,11 +4,11 @@ define(function(require) {
       template = require('text!../../html/stat.html'),
       Stat = require('../models/stat');
 
-  function StatView(id) {
+  function StatView(args) {
     this.stat = {};
 
     var self = this;
-    hub.trigger('getStatById', id, function(stat) { self.stat = stat; });
+    hub.trigger('getStatById', args[0], function(stat) { self.stat = stat; });
   };
 
   StatView.prototype = {

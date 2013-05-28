@@ -1,4 +1,10 @@
-<button data-on-click=":edit"><i class="icon-pencil"></i></button>
-<button data-on-click=":remove"><i class="icon-remove"></i></button>
-<span data-text="stat.raw"></span>
-<strong data-text="stat.valueString"></strong>
+<div class="row-fluid">
+  <div class="span10">
+    <span data-text="stat.raw"></span>
+    <strong data-text="stat.valueString"></strong>
+  </div>
+  <div class="span2">
+    <button data-tooltip data-toggle="tooltip" title="Edit" data-on-click=":edit"><i class="icon-pencil"></i></button>
+    <button data-tooltip data-toggle="tooltip" title="Delete" data-on-click=":remove"><i class="icon-remove"></i></button>
+  </div>
+</div>

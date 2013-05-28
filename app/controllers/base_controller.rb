@@ -3,6 +3,7 @@ class BaseController < Sinatra::Base
   enable :sessions
   set :session_secret, 'super secret'
   set :root, File.dirname(__FILE__) + '/../..'
+  set :views, Proc.new { root + '/app/views' }
 
   use Rack::Parser
   use Warden::Manager do |manager|

@@ -15,7 +15,8 @@ window.onload = function() {
 			'icon-eye-blocked' : '&#xe006;',
 			'icon-pencil' : '&#xe007;',
 			'icon-remove' : '&#xe008;',
-			'icon-close' : '&#xe009;'
+			'icon-close' : '&#xe009;',
+			'icon-floppy' : '&#xe00a;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;

@@ -4,7 +4,7 @@ define(function(require) {
       template = require('text!../../html/snapshot.html');
 
   function SnapshotView() {
-    this.hidden = false;
+    this.hidden = true;
   };
 
   SnapshotView.prototype = {

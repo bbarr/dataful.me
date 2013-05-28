@@ -21,17 +21,13 @@
 	-webkit-font-smoothing: antialiased;
 }
 
-[class*="icon-"]:before {
-  font-family: inherit;
-}
-
 /* Use the following CSS code if you want to have a class per icon */
 /*
 Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-exit, .icon-enter, .icon-wrench, .icon-plus, .icon-minus, .icon-eye, .icon-eye-blocked, .icon-pencil, .icon-remove, .icon-close {
+.icon-exit, .icon-enter, .icon-wrench, .icon-plus, .icon-minus, .icon-eye, .icon-eye-blocked, .icon-pencil, .icon-remove, .icon-close, .icon-floppy {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -70,4 +66,7 @@ you can use the generic selector below, but it's slower:
 }
 .icon-close:before {
 	content: "\e009";
+}
+.icon-floppy:before {
+	content: "\e00a";
 }

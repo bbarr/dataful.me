@@ -1,4 +1,4 @@
-class Stat
+class Statistic
   include MongoMapper::Document
 
   key :raw, String, required: true
@@ -6,7 +6,11 @@ class Stat
   belongs_to :user
 
   def value(limiting_date=nil)
-    Statician.new(user).calculate(raw, limiting_date)
+    begin
+      Statician.new(user).calculate(raw, limiting_date)
+    rescue
+      {}
+    end
   end
 
   def action

@@ -3,17 +3,17 @@ class StatsController < BaseController
   requires_user
 
   get "/" do
-    ok current_user.stats
+    ok current_user.statistics
   end
 
   get "/:id/historic/:date" do
-    stat = current_user.stats.find params[:id]
-    if stat
+    statistic = current_user.statistics.find params[:id]
+    if statistic
       date = Time.at(params[:date].to_i).utc.end_of_day
-      data = { action: stat.action }
+      data = { action: statistic.action }
       data[:values] = (1..7).reduce([]) do |values|
         values << {
-          value: stat.value(date),
+          value: statistic.value(date),
           date: date
         }
         date = date.yesterday
@@ -30,36 +30,37 @@ class StatsController < BaseController
   end
 
   post "/" do
-    stat = current_user.stats.build params
-    if stat.save
-      created stat
+    statistic = current_user.statistics.build params
+    if statistic.save
+      created statistic
     else
-      errored stat
+      errored statistic
     end
   end
 
   put "/:id" do
-    stat = current_user.stats.find params[:id]
-    stat.update_attributes params
-    if stat.save
-      ok stat
+    debugger
+    statistic = current_user.statistics.find params[:id]
+    statistic.update_attributes params
+    if statistic.save
+      ok statistic
     else
       missing
     end
   end
 
   get "/:id" do
-    stat = current_user.stats.find params[:id]
-    if stat
-      ok stat
+    statistic = current_user.statistics.find params[:id]
+    if statistic
+      ok statistic
     else
       missing
     end
   end
 
   delete "/:id" do
-    stat = current_user.stats.find params[:id]
-    if stat and stat.destroy
+    statistic = current_user.statistics.find params[:id]
+    if statistic and statistic.destroy
       ok
     else
       missing

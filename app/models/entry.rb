@@ -9,6 +9,11 @@ class Entry
 
   belongs_to :user
 
+  def self.tag_keys_for(user)
+    entries = Entry.where(user_id: user.id).fields(:tags).all
+    entries.map{ |e| e.tags.keys }.flatten.uniq.map{ |e| { value: e } }
+  end
+
   private
 
     def parse

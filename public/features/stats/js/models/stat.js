@@ -5,7 +5,6 @@ define(function(require) {
 
   function Stat() {
     this.key('raw');
-    this.key('value');
   };
 
   Stat.prototype = {
