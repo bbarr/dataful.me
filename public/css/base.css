@@ -102,6 +102,8 @@ header {
 
 #entries button {
   float: right; }
+#entries input {
+  width: 100%; }
 #entries li {
   border-bottom: 1px solid #747d7d;
   font-family: Helvetica;
@@ -117,9 +119,9 @@ header {
   width: 100%;
   font-size: 20px; }
 #stats .stat-gui fieldset span {
-  color: #747d7d; }
+  opacity: .6; }
   #stats .stat-gui fieldset span.active {
-    color: white; }
+    opacity: 1; }
 #stats .stat-gui select {
   font-size: 20px;
   height: 35px;
@@ -143,7 +145,13 @@ header {
   line-height: 50px; }
 #stats .stat-gui fieldset {
   margin: 0 0 30px 0;
-  display: block; }
+  display: block;
+  background: #383838;
+  color: white;
+  padding: 18px; }
+  #stats .stat-gui fieldset select, #stats .stat-gui fieldset input {
+    background: #232324;
+    color: white; }
 #stats .stat-gui button {
   float: none;
   display: inline; }

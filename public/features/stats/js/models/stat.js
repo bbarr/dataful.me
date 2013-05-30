@@ -4,7 +4,7 @@ define(function(require) {
       decorator = require('../decorators/stat_decorator');
 
   function Stat() {
-    this.key('raw');
+    this.key('raw', { default: '' });
   };
 
   Stat.prototype = {

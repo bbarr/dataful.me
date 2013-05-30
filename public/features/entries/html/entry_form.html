@@ -1,3 +1,12 @@
 <form data-on-submit=":save">
-  <input type="text" autofocus data-value="entry.raw" />
+  <div class="row-fluid">
+    <div class="span8">
+      <input type="text" autofocus data-value="entry.raw" />
+      <small>Space-seperated key/value pairs, like this: "key:value" or just "key"</small>
+    </div>
+    <div class="span4">
+      <button data-toggle="tooltip" title="cancel" data-tooltip type="button" data-on-click=":cancel"><i class="icon-close"></i></button>
+      <button data-toggle="tooltip" title="save" data-tooltip type="button" data-on-click=":save"><i class="icon-floppy"></i></button>
+    </div>
+  </div>
 </form>

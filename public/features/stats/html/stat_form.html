@@ -20,9 +20,9 @@
               <option data-each-tagkey=".tagKeys" data-value="tagkey:value" data-text="tagkey:value"></option>
             </select>.
             <span data-class-active="stat.showingFilter">
-              But only for the entries in which
+              But only include entries in which
               <select data-value="stat.filterSubject">
-                <option>--</option>
+                <option value="">--</option>
                 <option data-each-tagkey=".tagKeys" data-value="tagkey:value" data-text="tagkey:value"></option>
               </select>
               <select data-value="stat.filterClause">
@@ -35,7 +35,7 @@
               <input type="text" data-hide="stat.existentialFilter" data-value="stat.filterValue" />
             </span>
             <span data-class-active="stat.showingTimeFilter">
-              Also, only for the entries that occurred  
+              And/or, only include entries that occurred  
               <select data-value="stat.timeFilterDurationDirection">
                 <option value="">--</option>
                 <option value="less than">less than</option>

@@ -23,7 +23,7 @@ define(function(require) {
   StatsView.prototype = {
 
     add: function() {
-      this.stats.unshift(new Stat({ editing: true }));
+      this.stats.push(new Stat({ editing: true }));
     }
   };
 
