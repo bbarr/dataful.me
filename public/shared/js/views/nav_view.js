@@ -1,7 +1,8 @@
 define(function(require) {
 
   var hub = require('hub'),
-      template = require('text!../../html/nav.html');
+      template = require('text!../../html/nav.html'),
+      Session = require('shared/js/models/session');
 
   function NavView() {
 
@@ -14,7 +15,9 @@ define(function(require) {
     },
 
     logout: function() {
-      hub.trigger('logout bitches');
+      new Session().destroy().success(function() {
+        hub.trigger('session:destroyed');
+      });
     }
   };
 

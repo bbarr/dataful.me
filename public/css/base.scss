@@ -85,6 +85,14 @@ body {
   }
 }
 
+a {
+  color: $yellow;
+  &:hover {
+    color: $yellow;
+    text-decoration: none;
+  }
+}
+
 button {
   border: none;
   background: transparent;
@@ -261,5 +269,45 @@ header {
     outline: none;
     border-color: $yellow;
     box-shadow: 0 0 10px $yellow;
+  }
+}
+
+#marketing {
+
+  h3 {
+    line-height: 55px;
+    color: $white;
+  }
+
+  p {
+    padding: 10px 0;
+    margin: 0;
+    &:first-child {
+      border: none;
+    }
+    color: $smoke;
+  }
+
+  strong {
+    color: $yellow;
+    font-size: 1em;
+  }
+
+  code {
+    color: $charcoal;
+    display: block;
+    padding: 10px;
+    line-height: 1em;
+    font-family: courier;
+    font-size: .6em;
+  }
+
+  code + code {
+    margin-top: 10px;
+  }
+
+  input {
+    display: block;
+    margin: 0 0 10px;
   }
 }

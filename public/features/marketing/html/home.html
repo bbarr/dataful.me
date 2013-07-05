@@ -1,0 +1,28 @@
+<div class="widget">
+  <div data-show=".showingLogin">
+    <form data-on-submit=":login">
+      <input type="text" name="email" placeholder="email" data-value="newSession.email" />
+      <span class="error" rel="email"></span>
+      <input type="password" name="password" placeholder="password" autocomplete="off" data-value="newSession.password" />
+      <span class="error" rel="password"></span>
+      <button>
+        <i class="icon-enter"></i>
+      </button>
+      <a href="#" rel="signup" data-on-click=":showSignup">Not dataful yet? Click here to sign up.</a>
+    </form>
+  </div>
+  <div data-hide=".showingLogin">
+    <form data-on-submit=":signup">
+      <input type="text" name="email" placeholder="email" data-value="newUser.email" />
+      <span class="error" rel="email"></span>
+      <input type="password" name="password" placeholder="password" autocomplete="off" data-value="newUser.password" />
+      <span class="error" rel="password"></span>
+      <input type="password" name="confirm_password" placeholder="confirm password" autocomplete="off" data-value="newUser.confirm_password" />
+      <span class="error" rel="confirm_password"></span>
+      <button>
+        <i class="icon-enter"></i>
+      </button>
+      <a href="#" rel="login" data-on-click=":showLogin">Already dataful? Click here to log in.</a>
+    </form>
+  </div>
+</div>

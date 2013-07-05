@@ -2,16 +2,18 @@ define(function(require) {
 
   var asDocument = require('jsmapper/document');
 
-  function Session() {
+  function User() {
     this.key('email');
     this.key('password');
+    this.key('confirm_password');
   };
 
-  Session.url = '/session';
+  User.url = '/user';
 
-  Session.prototype = {
+  User.prototype = {
 
   };
 
-  return asDocument(Session);
+  return asDocument(User);
 });
+

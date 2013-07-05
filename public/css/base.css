@@ -62,6 +62,12 @@ body {
   body [class^="icon-"] {
     vertical-align: text-top; }
 
+a {
+  color: yellow; }
+  a:hover {
+    color: yellow;
+    text-decoration: none; }
+
 button {
   border: none;
   background: transparent;
@@ -190,3 +196,28 @@ header {
     outline: none;
     border-color: yellow;
     box-shadow: 0 0 10px yellow; }
+
+#marketing h3 {
+  line-height: 55px;
+  color: white; }
+#marketing p {
+  padding: 10px 0;
+  margin: 0;
+  color: #747d7d; }
+  #marketing p:first-child {
+    border: none; }
+#marketing strong {
+  color: yellow;
+  font-size: 1em; }
+#marketing code {
+  color: #383838;
+  display: block;
+  padding: 10px;
+  line-height: 1em;
+  font-family: courier;
+  font-size: .6em; }
+#marketing code + code {
+  margin-top: 10px; }
+#marketing input {
+  display: block;
+  margin: 0 0 10px; }

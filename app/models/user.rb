@@ -4,11 +4,12 @@ class User
   before_create :encrypt_password
 
   validate :match_passwords
+  validates_uniqueness_of :email
   validates_presence_of :email, :message => 'Email cannot be blank'
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create, :message => 'Email is not valid'
   validates_presence_of :password, :message => 'Password cannot be blank'
 
-  attr_accessor :password
+  attr_accessor :password, :confirm_password
   key :email, String
   key :encrypted_password, String
 
@@ -16,7 +17,9 @@ class User
   many :statistics
 
   def match_passwords
-    p email
+    p password
+    p confirm_password
+    p password == confirm_password
     errors.add(:confirm_password, "Confirm password doesn't match password") unless password == confirm_password
   end
 

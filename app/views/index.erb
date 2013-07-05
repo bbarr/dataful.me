@@ -5,60 +5,97 @@
   <link rel="stylesheet" href="css/bootstrap.css" />
   <link rel="stylesheet" href="css/base.css" />
 </head>
-<body id="landing">
+<body id="marketing">
 
   <div id="wrapper">
-    <form id="login" method="POST" action="/session">
-      <input type="text" name="email" placeholder="email" />
-      <span class="error" rel="email"></span>
-      <input type="password" name="password" placeholder="password" autocomplete="off" />
-      <span class="error" rel="password"></span>
-      <input type="submit" class="btn" />
-      <a href="#" rel="signup">Not dataful yet? Click here to sign up.</a>
-    </form>
-    <form id="signup" method="POST" action="/user" style="display: none">
-      <input type="text" name="email" placeholder="email" />
-      <span class="error" rel="email"></span>
-      <input type="password" name="password" placeholder="password" autocomplete="off" />
-      <span class="error" rel="password"></span>
-      <input type="password" name="confirm_password" placeholder="confirm password" autocomplete="off" />
-      <span class="error" rel="confirm_password"></span>
-      <input type="submit" class="btn" />
-      <a href="#" rel="login">Already dataful? Click here to log in.</a>
-    </form>
+    <header>
+      <div class="container">
+        <h1>dataful.me</h1>
+      </div>
+    </header>
+    <div id="content">
+      <div class="container">
+        <div class="widget">
+          <h3><strong>Welcome!</strong><br />Track, quantify, and improve yourself.</h3>
+        </div>
+        <div class="widget">
+          <p>
+            We are ALMOST ready to start accepting beta-testers...
+          </p>
+          <p>
+            It will look something like this:
+          </p>
+          <p>Track things like this (or we can dynamically create these entries from another app you use, like Runkeeper):</p>
+          <code>
+            coffee
+          </code>
+          <code>
+            running miles:8 shoes:minimus energy:7
+          </code>
+          <p>Then create your own statistics from that data, like this:</p>
+          <code>
+            average energy(running <1h>coffee)
+            //=> average energy while running, less than 1 hour after coffee
+          </code>
+          <code>
+            sum miles(shoes:minimus)
+            //=> sum of all miles with minimus shoes
+          </code>
+        </div>
+        <!--
+        <div class="widget">
+          <h3>It works something like this...</h3>
+          <p>
+            Let's say I had a coffee shortly after waking up one morning.
+            <br />
+            <strong>I could add an entry:</strong>
+            <code>
+              coffee
+            </code>
+          </p>
+          <p>
+            Then perhaps I went for a run, before starting work.
+            <br />
+            <strong>And then I add another entry:</strong>
+            <code>
+              run miles:4 energy:8 shoes:minimus
+            </code>
+          </p>
+          <p>
+            Now I wonder how that coffee has been affecting my running.
+            <br />
+            <strong>So I define a couple of stats, like this:</strong>
+            <code>
+              average energy (running) less than 2 hours after coffee
+            </code>
+            <code>
+              average energy (running) not less than 2 hours after coffee
+            </code>
+            <br />
+            Which reveals the values 5.9 and 7.3, respectively. Not a good sign for my coffee habit.. But perhaps there is more to it. Perhaps it is just the morning time that drags me down, since thats when I usually drink my coffee.
+            <br />
+            <strong>So I enter another stat:</strong>
+            <code>
+              average energy (running TIME:&gt;10am) not less than 2 hours after coffee
+            </code>
+            <br />
+            This gives me 6.1. So it looks like coffee isn't as much of a factor as time of day.
+          </p>
+          <p>
+            You hopefully get the idea by now, and you most likely want to sign up and start tracking things for yourself.
+          </p>
+        </div>
+        -->
+        <div data-view="HomeView"></div>
+      </div>
+    </div>
+
   </div>
 
-  <script src="/js/vendor/jquery.js"></script>
+  <script src="vendor/js/require.js"></script>
   <script>
-    $(function() {
+    require([ 'main.js' ], function() {
 
-      var $forms = $('form'),
-          $errors = $forms.find('.error');
-      
-      $forms.find('a').click(function(e) {
-        e.preventDefault();
-        var id = $(this).closest('form').hide().end().attr('rel');
-        $forms.find('.error').hide();
-        $('#' + id).show();
-      });
-
-      $forms.submit(function(e) {
-        e.preventDefault();
-
-        var $this = $(this),
-            data = $this.serialize();
-
-        $.post($this.attr('action'), data)
-          .success(function() { window.location.reload(); })
-          .error(function(xhr) { 
-            var errors = JSON.parse(xhr.responseText),
-                message;
-            for (var key in errors) {
-              message = typeof errors[key] === 'string' ? errors[key] : errors[key].join('<br />');
-              $this.find('[rel=' + key + ']').html(message).show();
-            }
-          });     
-      });
     });
   </script>
 </body>
